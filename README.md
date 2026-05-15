@@ -17,7 +17,7 @@ Tecnologías utilizadas
 
 Instalación y uso
 Clona el repositorio:
-git clone https://github.com/
+git clone https://leondev0.github.io/Login-UX/
 Abre index.html en tu navegador (se recomienda usar Live Server en VS Code).
 
 Créditos
