@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Kochi&display=swap" rel="stylesheet">
+</head>
+<style>
+body{
+    background: linear-gradient(90deg, rgba(18, 18, 18, 1) 3%, rgba(31, 31, 31, 1) 29%, rgba(41, 41, 41, 1) 95%);
+    color: #fff;
+    font-family: 'Hind Kochi', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* class */
+.login-anim{
+    margin-top: 30px;
+    margin-bottom: -70px;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+.main-form{
+    margin-top: 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 2;
+}
+.main-tb{
+    border-spacing: 0 10px;
+    padding: 35px;
+}
+.user-let, .pass-let{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.login-btn{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #3a86ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.4s ease-in-out, transform 0.2s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.wave-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; 
+    margin: 0;
+    padding: 0;
+    z-index: -1; 
+    pointer-events: none;
+}
+.waves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+}
+.parallax use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+.parallax use:nth-child(2) {
+    animation-delay: -4s;
+    animation-duration: 10s;
+}
+.parallax use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+@keyframes move-forever {
+  0% { transform: translate3d(-90px,0,0); }
+  100% { transform: translate3d(85px,0,0); }
+}
+@keyframes spin{
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* id */
+.letters .letter {
+    display: inline-block;
+    line-height: 1em; 
+}
+
+.letters {
+    opacity: 1; 
+}
+#username, #password{
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 280px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+#username, #password{
+    transition: all 0.3 ease;
+    border: 1px solid transparent;
+}
+
+#username:focus, #password:focus{
+    outline: none;
+    border-color: #3a86ff;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#pass-bar{
+    height: 5px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+#strong-bar{
+    height: 100%;
+    width: 0%;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+#strong-text{
+    margin-left: 10px;
+    font-size: 14px;
+    color: #aaa;
+}
+#preloader{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #121212;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+#loader-text{
+    color: #fff;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Vision de mobile: CODIGO REUSADO (mio) y editado por Gemini */
+@media (max-width: 480px) {
+    body {
+        padding: 20px; 
+    }
+
+    .letters {
+        font-size: 28px; 
+        text-align: center;
+    }
+
+    .main-form {
+        margin-top: 40px; 
+        width: 100%;
+        max-width: 320px; 
+    }
+
+    #username, #password {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .wave-container {
+        height: 100px;
+    }
+}
+/* hover */
+.login-btn:hover{
+    background-color: #1e5bb8;
+    transform: scale(1.02);
+}
+</style>
+
+<body>
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p id="loader-text">Cargando...</p>
+        </div>
+    </div>
+    <div class="login-anim">
+    <h1 class="login-title" id="anime-login">
+        <span class="text-wrapper">
+            <span class="letters">Iniciar Sesión</span> 
+        </span>
+    </h1>
+</div>
+    <div class="wave-container">
+            <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(58, 134, 255, 0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(58, 134, 255, 0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(58, 134, 255, 0.8)" />
+                </g>
+            </svg>
+    </div>
+<div class="main-form"> 
+    <form  action="/actionlogin-test.html" method="post" id="main-form"> 
+        <table class="main-tb">
+            <tbody> 
+                <tr>
+                    <td><label for="username" required class="user-let">Nombre de usuario</label></td>
+                    </tr>
+                    <tr>
+                    <td><input type="text" name="username" id="username" placeholder="Nombre de usuario" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password" required class="pass-let">Contraseña</label></td>
+                </tr>
+                <tr> 
+                    <td><input type="password" name="password" id="password" placeholder="Contraseña" required></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <div id="pass-bar">
+                            <div id="strong-bar"></div>
+                            </div>
+                            <span id="strong-text"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><button type="submit" class="login-btn">Iniciar sesión</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="index.js"></script>
+</html>
